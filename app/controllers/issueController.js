@@ -1060,7 +1060,9 @@ let removeFromWatcherList = (req, res) => {
           reject(apiResponse);
         } else {
           let userId = req.params.userId;
+          console.log(userId);
           const watcherList = result.watcherList;
+          console.log(watcherList);
           if (watcherList.length > 0) {
             const newWatcherList = [];
             for (let res of watcherList) {
@@ -1068,11 +1070,14 @@ let removeFromWatcherList = (req, res) => {
                 newWatcherList.push(res);
               }
             }
+            console.log(newWatcherList);
             result.watcherList = newWatcherList;
           }
 
           let username = req.body.username;
+          console.log(username);
           const watcherListUsers = result.watcherListUsers;
+          console.log(watcherListUsers);
           if (watcherListUsers.length > 0) {
             const newWatcherList = [];
             for (let res of watcherListUsers) {
@@ -1080,7 +1085,8 @@ let removeFromWatcherList = (req, res) => {
                 newWatcherList.push(res);
               }
             }
-            result.watcherListUsers = watcherListUsers;
+            console.log(newWatcherList);
+            result.watcherListUsers = newWatcherList;
           }
 
           result.save(function (err, result) {
