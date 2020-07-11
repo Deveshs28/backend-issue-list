@@ -23,6 +23,7 @@ let isAuthorized = (req, res, next) => {
             500,
             null
           );
+          res.status(500);
           res.send(apiResponse);
         } else if (check.isEmpty(authDetails)) {
           logger.error(
@@ -36,6 +37,7 @@ let isAuthorized = (req, res, next) => {
             401,
             null
           );
+          res.status(401);
           res.send(apiResponse);
         } else {
           token.verifyToken(
@@ -50,6 +52,7 @@ let isAuthorized = (req, res, next) => {
                   401,
                   null
                 );
+                res.status(401);
                 res.send(apiResponse);
               } else {
                 req.user = { userId: decoded.data.userId };
@@ -68,6 +71,7 @@ let isAuthorized = (req, res, next) => {
       400,
       null
     );
+    res.status(400);
     res.send(apiResponse);
   }
 };
